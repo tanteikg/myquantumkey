@@ -16,15 +16,15 @@ Register a key that can be used in the quantum future to authenticate yourself
 
 ## Solution
 1)	Create a “myquantumkey” smartcontract that has the following methods:
-  o	CreateKey – called by wallet owner to create a secret. 
-  o	ConfirmKey – called by wallet onwer in a subsequent Epoch to confirm the linkage. 
-  o	StopConfirmKey – to prevent ConfirmKey from being called. Can only be called by owner before quantum computers are powerful enough.
-  o	RetrieveKey – called by any method to retrieve ConfirmBlob.  
+ - CreateKey: called by wallet owner to submit the key verification blob
+ - ConfirmKey: called by wallet onwer in a subsequent Epoch to confirm the key verification blob 
+ - StopConfirmKey: to prevent ConfirmKey from being called. Can only be called by owner before quantum computers are powerful enough.
+ - RetrieveKey: called by any method to retrieve the key verification blob
 
 2)	Create a “myquantumkey” front-end app to perform the following:
-  o	Perform “CreateKey”
-  o	Perform “ConfirmKey”
-  o	Perform “CheckKey”
+ - “CreateKey”: to allow wallet owner to submit the key verification blob
+ - “ConfirmKey”: to allow walllet owner to confirm the key verification blob
+ - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification
 
 ##	Threat model
 o	Attacker attempts to perform an unauthorized CreateKey or ConfirmKey.
