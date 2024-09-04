@@ -27,9 +27,9 @@ Register a key that can be used in the quantum future to authenticate yourself
  - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification
 
 ##	Threat model
-o	Attacker attempts to perform an unauthorized CreateKey or ConfirmKey.
- -	Not possible since Attacker does not have wallet key to sign the transaction
-o	Attacker attempts to retrieve the secret from ConfirmKey
- -	Not possible since Keccak256 cannot be reversed
-o	Attacker attempts to impersonate as wallet owner after using a quantum computer to find the wallet private key
- -	Not possible since Attacker does not know the secret, and cannot present the zero-knowledge proof of the secret
+- 	Attacker attempts to perform an unauthorized CreateKey or ConfirmKey.
+   --	Not possible since Attacker does not have wallet key to sign the transaction
+-	 Attacker attempts to retrieve the secret from ConfirmKey
+   --	Not possible since Keccak256 cannot be reversed
+-	Attacker attempts to impersonate as wallet owner after using a quantum computer to find the wallet private key
+  --	Not possible since Attacker does not know the secret, and cannot present the zero-knowledge proof of the secret
