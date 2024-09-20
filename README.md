@@ -15,21 +15,24 @@ Register a key that can be used in the quantum future to authenticate yourself
 -	After post-quantum migration, authentication of classical walletaddresses will require both the digital signature as well as a zero-knowledge proof of the secret.
 
 ## Solution
-1)	Create a “myquantumkey” smartcontract that has the following methods:
- - CreateKey: called by wallet owner to submit the key verification blob
- - ConfirmKey: called by wallet onwer in a subsequent Epoch to confirm the key verification blob 
- - StopConfirmKey: to prevent ConfirmKey from being called. Can only be called by owner before quantum computers are powerful enough.
- - RetrieveKey: called by any method to retrieve the key verification blob
-
-2)	Create a “myquantumkey” front-end app to perform the following:
- - “CreateKey”: to allow wallet owner to submit the key verification blob
- - “ConfirmKey”: to allow walllet owner to confirm the key verification blob
+1) Think of a secret (should be long)
+   
+2)	What we want is to create a ENS TEXT record with key "myquantumkey" that stores the text which should be created based on Keccak256(Keccak256(secret)+walletaddress)
+   
+3)	To build a front-end app "myquantumkey" to perform the following
+ - “CreateENSRecord”: to allow wallet owner to create the text record.
+   -- input parameter is:	Secret value in hexadecimal
+   -- Operation
+      ---	Get walletaddress
+      ---	Perform Keccak256(Keccak256(Secret)+walletaddress)
+      ---	Create TEXT record in ENS
  - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification
+ - "CreateProof" : to allow owner to proof knowledge of key without revealing key 
 
 ##	Threat model
-- 	Attacker attempts to perform an unauthorized CreateKey or ConfirmKey.
+- 	Attacker attempts to perform an unauthorized record creation.
    --	Not possible since Attacker does not have wallet key to sign the transaction
--	 Attacker attempts to retrieve the secret from ConfirmKey
+-	 Attacker attempts to retrieve the secret from TEXT record
    --	Not possible since Keccak256 cannot be reversed
 -	Attacker attempts to impersonate as wallet owner after using a quantum computer to find the wallet private key
   --	Not possible since Attacker does not know the secret, and cannot present the zero-knowledge proof of the secret
