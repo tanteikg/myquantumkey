@@ -21,18 +21,35 @@ Register a key that can be used in the quantum future to authenticate yourself
    
 3)	To build a front-end app "myquantumkey" to perform the following
  - “CreateENSRecord”: to allow wallet owner to create the text record.
-   -- input parameter is:	Secret value in hexadecimal
-   -- Operation
-      ---	Get walletaddress
-      ---	Perform SHA256(Secret)
-      ---	Create TEXT record in ENS
+    -- UPDATE: this function is not needed as it is already provided by https://app.ens.domains/
  - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification
  - "CreateProof" : to allow owner to proof knowledge of key without revealing key 
 
-##	Threat model
+## Threat model
 - 	Attacker attempts to perform an unauthorized record creation.
    --	Not possible since Attacker does not have wallet key to sign the transaction
 -	 Attacker attempts to retrieve the secret from TEXT record
    --	Not possible since Keccak256 cannot be reversed
 -	Attacker attempts to impersonate as wallet owner after using a quantum computer to find the wallet private key
   --	Not possible since Attacker does not know the secret, and cannot present the zero-knowledge proof of the secret
+
+## installation 
+
+note: only tested on WSL2 running on Windows (i.e. Linux on Windows)
+
+```
+git clone https://github.com/tanteikg/myquantumkey
+cd cli/ZKBoo/MPC_SHA256
+make
+cd ../..
+```
+
+if you list the directory, you will see the following files:
+- Usage.md (how to use)
+- getText.mjs 
+- myquantumkey\_create.exe
+- myquantumkey\_create.exe
+
+Please follow the usage [here](cli/Usage.md) on how use 
+
+
