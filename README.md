@@ -35,17 +35,18 @@ Register a key that can be used in the quantum future to authenticate yourself
 
 ## installation 
 
+please ignore the REACT stuff. 
 note: only tested on WSL2 running on Windows (i.e. Linux on Windows)
 
 ```
 git clone https://github.com/tanteikg/myquantumkey
-cd cli/ZKBoo/MPC_SHA256
+cd cli/zkmpc
 make
-cd ../..
+cd ..
 ```
 
-if you list the directory, you will see the following files:
-- Usage.md (how to use)
+if you list the cli directory, you will see the following files:
+- Usage.md 
 - getText.mjs 
 - myquantumkey\_create.exe
 - myquantumkey\_create.exe
