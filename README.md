@@ -10,21 +10,21 @@ Register a key that can be used in the quantum future to authenticate yourself
 
 ## Assumptions
 -	Currently, besides the wallet owner, no other persons/attackers can create a valid digital signature corresponding to the wallet address
--	A hash performed using Keccak256 on a randomly generated secret pre-image values of size larger than 256 bits is resistant against quantum cryptanalysis.
--	There exists a quantum-safe context-sensitive zero-knowledge proof system that wallet owners can use in the future to prove knowledge of the secret pre-image of a Keccak256 hash.
+-	A hash performed using SHA256 on a randomly generated secret pre-image values of size larger than 256 bits is resistant against quantum cryptanalysis.
+-	There exists a quantum-safe context-sensitive zero-knowledge proof system that wallet owners can use in the future to prove knowledge of the secret pre-image of a SHA256 hash.
 -	After post-quantum migration, authentication of classical walletaddresses will require both the digital signature as well as a zero-knowledge proof of the secret.
 
 ## Solution
 1) Think of a secret (should be long)
    
-2)	What we want is to create a ENS TEXT record with key "myquantumkey" that stores the text which should be created based on Keccak256(Keccak256(secret)+walletaddress)
+2)	What we want is to create a ENS TEXT record with key "myquantumkey" that stores the text which should be created based on SHA256(secret)
    
 3)	To build a front-end app "myquantumkey" to perform the following
  - “CreateENSRecord”: to allow wallet owner to create the text record.
    -- input parameter is:	Secret value in hexadecimal
    -- Operation
       ---	Get walletaddress
-      ---	Perform Keccak256(Keccak256(Secret)+walletaddress)
+      ---	Perform SHA256(Secret)
       ---	Create TEXT record in ENS
  - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification
  - "CreateProof" : to allow owner to proof knowledge of key without revealing key 
