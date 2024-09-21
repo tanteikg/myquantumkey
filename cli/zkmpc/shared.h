@@ -93,17 +93,18 @@ void getAllRandomness(unsigned char key[16], unsigned char randomness[2912], cha
 	//Since AES block size is 128 bit, we need to run 728*32/128 = 182 iterations
 
 	EVP_CIPHER_CTX * ctx = EVP_CIPHER_CTX_new();
-	unsigned char * iv = (unsigned char *) "pQCee - Teik Guan";
+	unsigned char iv[16];
 	EVP_CIPHER_CTX_init(ctx);
 	//ctx = setupAES(key);
-	unsigned char plaintext[17]; 
+	unsigned char plaintext[16]; 
 
 	int len;
+	memset(iv,0x31,16);
+	strncpy(iv,challenge,16);
 	if (1 != EVP_EncryptInit_ex(ctx,EVP_aes_128_ctr(),NULL,key,iv))
 		handleErrors();
-
-	memset(plaintext,0,sizeof(plaintext));
-	strncpy(plaintext,challenge,16);
+	memset(plaintext,0x30,sizeof(plaintext));
+//	strncpy(plaintext,challenge,16);
 
 	for(int j=0;j<182;j++) {
 		if(1 != EVP_EncryptUpdate(ctx, &randomness[j*16], &len, plaintext, 16))

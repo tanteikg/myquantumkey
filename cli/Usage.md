@@ -17,7 +17,7 @@ Perform the following:
 2. Use the executable "myquantumkey\_create.exe" to calculate myquantumkey: 
 
 ```
-myquantumkey\_create.exe <secret>
+myquantumkey_create.exe <secret>
 ```
 
 The output will be something like:
@@ -38,7 +38,7 @@ In order to prove that you know your myquantumkey, you first will receive a "cha
 1. Use the executable "myquantumkey\_create.exe" to create the proof. Assuming that the challenge is "abcdef" (up to 16 characters): 
 
 ```
-myquantumkey\_create.exe <secret> abcdef
+myquantumkey_create.exe <secret> abcdef
 ```
 
 The output will be something like:

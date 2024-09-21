@@ -19,7 +19,7 @@ Register a key that can be used in the quantum future to authenticate yourself
    
 2)	What we want is to create a ENS TEXT record with key "myquantumkey" that stores the text which should be created based on SHA256(secret)
    
-3)	To build a front-end app "myquantumkey" to perform the following
+3)	To build a front-end client "myquantumkey" to perform the following
  - “CreateENSRecord”: to allow wallet owner to create the text record.
     -- UPDATE: this function is not needed as it is already provided by https://app.ens.domains/
  - “CheckKey”: to allow anyone to retrieve the key verification blob for user verification

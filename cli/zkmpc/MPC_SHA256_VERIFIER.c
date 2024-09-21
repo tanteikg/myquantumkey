@@ -48,7 +48,7 @@ int main(int argc, char * argv[]) {
 	a as[NUM_ROUNDS];
 	z zs[NUM_ROUNDS];
 	FILE *file;
-	char * challenge = argv[1];
+	char * challenge = argv[2];
 	char proofstr[100];
 
 	file = fopen(argv[3], "rb");
@@ -84,8 +84,11 @@ int main(int argc, char * argv[]) {
 	for(int i = 0; i<NUM_ROUNDS; i++) {
 		int verifyResult = verify(as[i], es[i], zs[i],challenge);
 		if (verifyResult != 0) {
-			printf("Error in Proof (round %d)\n", i);
-			failed = 1;
+			if (!failed)
+			{
+				printf("Error in Proof (round %d)\n", i);
+				failed = 1;
+			}
 		}
 	}
 	if (!failed)
