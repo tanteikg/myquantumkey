@@ -1,0 +1,3 @@
+[submodule "cli/ZKBoo"]
+	path = cli/ZKBoo
+	url = https://github.com/Sobuno/ZKBoo
