@@ -29,7 +29,7 @@ myquantumkey value of secret is:2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6
 3. Copy the value of myquantumkey and create a TEXT record in the ENS:
  - go to https://app.ens.domains/&lt;ENS name&gt; 
  - choose "edit profile" and add the TEXT record with key = myquantumkey and value = &lt;value of myquantumkey&gt;
- - it should look like ![image](ENS_TEXT.png =200x)
+ - it should look like ![image](ENS_TEXT.png)
 
 ### Create proof
 
